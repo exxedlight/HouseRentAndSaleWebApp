@@ -1,0 +1,17 @@
+﻿.navbar-brand {
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: large;
+}
+
+    .nav-item .nav-link:hover {
+        background: rgba(235, 155, 52, .4);
+        border-radius: 10px;
+    }
+
+.nav-link:hover {
+    background: rgba(52, 235, 55, .4);
+    border-radius: 10px;
+}
