@@ -1,0 +1,163 @@
+﻿@model PublicationViewModel
+@{
+    ViewData["Title"] = "Нове оголошення";
+}
+
+<link rel="stylesheet" href="~/css/SearchFilter.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/NewPublication.css" asp-append-version="true" />
+
+@if (!string.IsNullOrEmpty(Model.form_message))
+{
+    <p style="color: red; font-size: large; width: 100%; text-align:right;">@Model.form_message</p>
+}
+
+<form class="publication-form" enctype="multipart/form-data" asp-action="Publish" asp-controller="Publication" method="post">
+    <div class="wrapper-row">
+
+        <!-- img prewiev and load -->
+        <div class="wrapper-img">
+            <div class="images">
+                <img id="main-image" src=@(Model.images.Count > 0 ? @Model.images[0].Name : "/img/no_image.jpg") />
+                <div class="vert-gallery">
+                    @foreach (IFormFile file in Model.images)
+                    {
+                        <div class="gallery-element">
+                            <img src="@file.FileName" />
+                            <button><p>X</p></button>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <input type="file" accept=".jpg" title="Оберіть зображення" multiple name="images" value="@Model.images" />
+        </div>
+
+        <!-- main information and selects -->
+        <div class="wrapper-selects">
+            <h1>Інформація про нерухомість</h1>
+
+            <input type="text" placeholder="Заголовок" name="title" asp-for="title" value="@Model.title" />
+            <input type="text" placeholder="Адреса" name="adres" asp-for="adres" value="@Model.title" />
+            <br />
+            <div class="search-filter">
+                <select name="operation_type" asp-for="operation_type">
+                    <option value="1">Продаж</option>
+                    <option value="2">Здача у оренду</option>
+                </select>
+
+                <select name="build_type" asp-for="build_type">
+                    <option value="1">Будинок</option>
+                    <option value="2">Квартира</option>
+                    <option value="3">Гараж</option>
+                    <option value="4">Дача</option>
+                    <option value="5">Комерційна нерухомість</option>
+                    <option value="6">Ділянка</option>
+                </select>
+
+                <select name="item_state" asp-for="item_state">
+                    <option value="new">Нове</option>
+                    <option value="secondary">Вторинне</option>
+                </select>
+
+                <select name="area" asp-for="area">
+                    <option value="1">Київська обл.</option>
+                    <option value="2">Київ</option>
+                    <option value="3">Чернігівська обл.</option>
+                    <option value="4">Сумська обл.</option>
+                    <option value="5">Полтавська обл.</option>
+                    <option value="6">Черкаська обл.</option>
+                    <option value="7">Вінницька обл.</option>
+                    <option value="8">Житомирська обл.</option>
+                    <option value="9">Рівненська обл.</option>
+                    <option value="10">Волинська обл.</option>
+                    <option value="11">Львівська обл.</option>
+                    <option value="12">Закарпатська обл.</option>
+                    <option value="13">Івано-Франківська обл.</option>
+                    <option value="14">Чернівецька обл.</option>
+                    <option value="15">Тернопільська обл.</option>
+                    <option value="16">Хмельницька обл.</option>
+                    <option value="17">Черкаська обл.</option>
+                    <option value="18">Одеська обл.</option>
+                    <option value="19">Кировоградська обл.</option>
+                    <option value="20">Харківська обл.</option>
+                    <option value="21">Дніпровська обл.</option>
+                    <option value="22">Запорізька обл.</option>
+                    <option value="23">Херсонська обл.</option>
+                </select>
+            </div>
+            <br />
+
+            <input type="text" placeholder="Площа" name="square" asp-for="square" value="@Model.square" />
+            <input type="text" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" />
+
+            <br />
+            <input type="text" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" />
+        </div>
+
+    </div>
+
+
+
+    <!-- rest information -->
+    <div class="wrapper-rest">
+        <textarea placeholder="Опис оголошення" name="about">@Model.about</textarea>
+        <button type="submit"><p>Зберегти оголошення</p></button>
+    </div>
+
+</form>
+
+<script>
+    const fileInput = document.querySelector('input[type="file"]');
+    const mainImage = document.getElementById('main-image');
+    const vertGallery = document.querySelector('.vert-gallery');
+    let files = []; // Создаем массив для хранения выбранных файлов
+
+    fileInput.addEventListener('change', function () {
+        vertGallery.innerHTML = ''; // Очищаем содержимое галереи перед добавлением новых изображений
+        files = Array.from(fileInput.files); // Преобразуем FileList в массив
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imageUrl = e.target.result;
+                const galleryElement = document.createElement('div');
+                galleryElement.classList.add('gallery-element');
+
+                const img = document.createElement('img');
+                img.src = imageUrl;
+
+                const button = document.createElement('button');
+                button.innerHTML = '<p>X</p>';
+
+                // Добавляем обработчик клика для кнопки "X"
+                button.addEventListener('click', function () {
+                    const index = files.indexOf(file); // Получаем индекс удаляемого файла
+                    files.splice(index, 1); // Удаляем файл из массива files
+                    vertGallery.removeChild(galleryElement); // Удаляем элемент галереи
+                    updateInputFiles(); // Обновляем содержимое input[type="file"]
+                });
+                img.addEventListener('click', function () {
+                    mainImage.src = img.src;
+                });
+
+                galleryElement.appendChild(img);
+                galleryElement.appendChild(button);
+
+                vertGallery.appendChild(galleryElement);
+                mainImage.src = img.src;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Функция для обновления содержимого input[type="file"]
+    function updateInputFiles() {
+        const dataTransfer = new DataTransfer();
+        files.forEach(file => dataTransfer.items.add(file));
+        fileInput.files = dataTransfer.files;
+    }
+
+</script>

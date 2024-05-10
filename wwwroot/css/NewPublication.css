@@ -1,0 +1,206 @@
+﻿.wrapper-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wrapper-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 49%;
+    border: 2px solid rgba(0,0,0,.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0, .2) 10px 10px;
+    background: rgb(234, 234, 234);
+    align-items: center;
+    height: auto;
+}
+
+    .wrapper-img .images {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+        vertical-align: central;
+        align-items: center;
+    }
+
+    .wrapper-img img {
+        max-height: 600px;
+        width: auto;
+        max-width: 80%;
+        height: fit-content;
+        
+    }
+    .wrapper-img input {
+        margin-top: 20px;
+    }
+
+    .wrapper-img .images .vert-gallery {
+        max-height: 500px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        margin-left: 10px;
+        width: 20%;
+        overflow-y: scroll;
+        direction: rtl;
+    }
+        .wrapper-img .images .vert-gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        .wrapper-img .images .vert-gallery .gallery-element {
+            position: relative;
+            justify-self: center;
+            display: flex;
+            justify-content: center;
+        }
+
+            .wrapper-img .images .vert-gallery .gallery-element button {
+                position: absolute;
+                top: 0%;
+                right: 0%;
+                background: transparent;
+                backdrop-filter: blur(10px);
+                border-radius: 50%; /* Скругляем границы, чтобы сделать кнопку круглой */
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-size: 12px;
+                width: 20px; /* Задайте ширину и высоту кнопки по вашему усмотрению */
+                height: 20px;
+                line-height: 20px; /* Выравниваем текст по центру кнопки */
+                text-align: center; /* Выравниваем текст по центру кнопки */
+                cursor: pointer;
+                border: none; /* Удаляем границу у кнопки */
+            }
+
+                .wrapper-img .images .vert-gallery .gallery-element button:hover {
+                    background: rgba(0,0,0,.4);
+                }
+
+.image-list {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    overflow-y: scroll;
+    height: 200px;
+    max-height: 200px;
+}
+
+    .image-list li {
+        width: 90%;
+        height: 40px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        font-size: small;
+        word-wrap: anywhere;
+        min-height: 30px;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+        .image-list li:hover {
+            background: rgba(0,0,0,.3);
+            cursor: pointer;
+        }
+
+.wrapper-selects {
+    width: 49%;
+    border: 2px solid rgba(0,0,0,.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0, .2) 10px 10px;
+    background: rgb(234, 234, 234);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+    .wrapper-selects h1 {
+        width: 100%;
+        text-align: center;
+        font-size: x-large;
+    }
+
+    .wrapper-selects .search-filter {
+        width: 100%;
+        height: min-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .wrapper-selects .search-filter select {
+            margin-bottom: 5px;
+        }
+
+    .wrapper-selects input {
+        border: 1px solid gray;
+        border-radius: 15px;
+        margin-bottom: 5px;
+        background: rgba(199, 240, 239, .3);
+        height: 40px;
+        padding: 0 15px 0 15px;
+    }
+
+.wrapper-rest {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+    .wrapper-rest textarea {
+        width: 100%;
+        border-radius: 10px;
+        padding: 10px;
+        box-sizing: border-box;
+        box-shadow: rgba(0,0,0, .3) 10px 10px;
+        resize: none;
+        min-height: 400px;
+    }
+
+    .wrapper-rest button {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Центрируем текст по вертикали */
+
+        align-self: flex-end;
+
+        background: rgb(175, 222, 224);
+
+        width: 30%;
+        height: 80px;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 20%;
+        box-sizing: border-box;
+        box-shadow: rgba(0,0,0, .3) 10px 10px;
+        font-size: x-large;
+        font-weight: 600;
+    }
+        .wrapper-rest button:hover {
+            background: rgb(142, 178, 180);
+        }

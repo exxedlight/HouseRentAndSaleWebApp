@@ -34,7 +34,7 @@
                 <div class="current-user">
                     <a class="nav-link text-dark" href="#">@Context.Request.Cookies["un"].ToString()</a>
                     <div class="logged-user-menu">
-                        <a href="#">Додати оголошення</a>
+                        <a href="@Url.Action("Index", "Publication")">Додати оголошення</a>
                         <a href="#">Мої оголошення</a>
                         <a href="@Url.Action("DeleteCookie", "SignIn")">Вийти</a>
                     </div>
