@@ -25,9 +25,9 @@
 
             </ul>
 
-            @if (ViewData["Title"] != "Вхід" && ViewData["Title"] != "Реєстрація")
+            @if (ViewData["Title"].ToString() != "Вхід" && ViewData["Title"].ToString() != "Реєстрація")
             {
-                <a class="nav-link text-dark" asp-area="" asp-controller="SignIn" asp-action="Index">Увійти</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="SignIn" asp-action="SignIn">Увійти</a>
             }
         </div>
     </div>

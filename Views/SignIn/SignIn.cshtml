@@ -7,8 +7,10 @@
 </div>
 
 <form class="auth-form">
-    <input type="text" placeholder="Логін" />
-    <input type="password" placeholder="Пароль" />
+    <input type="text" placeholder="Логін" required />
+    <input type="password" placeholder="Пароль" required />
+
     <button type="submit"><p>Увійти</p></button>
+    
     <a href="@Url.Action("SignUp", "SignIn")">Немає аккаунту?</a>
 </form>
