@@ -1,4 +1,5 @@
-﻿using HouseRentAndSaleWebApp.DB.Entites;
+﻿using Azure.Core;
+using HouseRentAndSaleWebApp.DB.Entites;
 using HouseRentAndSaleWebApp.Models;
 using ImmovablesSales.DB;
 using Microsoft.AspNetCore.Mvc;
@@ -100,7 +101,7 @@ namespace HouseRentAndSaleWebApp.Controllers
             using (Context context = new Context())
             {
                 UserEntity? user = context.Users.FirstOrDefault(x => x.login == model.login && x.pass == GetHash(model.pass));
-                if (user == null) 
+                if (user == null)
                 {
                     model.form_message = "Користувача не знайдено";
                     model.form_massage_color = "Red";
@@ -108,15 +109,40 @@ namespace HouseRentAndSaleWebApp.Controllers
                 }
 
                 Response.Cookies.Append("u", user.Id.ToString(),
-                new CookieOptions
-                {
-                    Secure = true,
-                    Expires = DateTime.Now.AddDays(7)
-                }
+                new CookieOptions { Secure = true, Expires = DateTime.Now.AddDays(7) }
+                );
+                Response.Cookies.Append("un", user.login.ToString(),
+                new CookieOptions { Secure = true, Expires = DateTime.Now.AddDays(7) }
                 );
             }
 
             return View("SignIn", new SignInViewModel { form_message = "Вхід успішний" });
+        }
+
+        public static bool isValidCookie(HttpRequest request)
+        {   //  checks cookie for valid (with DB check)
+
+            string? user_guid = request.Cookies["u"];
+            string? user_login = request.Cookies["un"];
+
+            if (user_guid == null || user_login == null) return false;
+
+            using (Context context = new Context())
+            {
+                UserEntity? user = context.Users.FirstOrDefault(x => x.Id.ToString() == user_guid);
+                if (user == null) return false;
+                if (user.login != user_login) return false;
+            }
+
+            return true;
+        }
+
+        public IActionResult DeleteCookie()
+        {   //  logOut user
+            Response.Cookies.Append("u", "", new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+            Response.Cookies.Append("un", "", new CookieOptions { Expires = DateTime.Now.AddDays(-1) });
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

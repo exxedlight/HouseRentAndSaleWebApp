@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
     <div class="container-fluid">
-        
+
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RentAndSale</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -8,13 +8,13 @@
         </button>
 
         <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            
+
             <ul class="navbar-nav flex-grow-1">
-                
+
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Купити</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Орендувати</a>
                 </li>
@@ -25,10 +25,52 @@
 
             </ul>
 
-            @if (ViewData["Title"].ToString() != "Вхід" && ViewData["Title"].ToString() != "Реєстрація")
+            @if (ViewData["Title"].ToString() != "Вхід" && ViewData["Title"].ToString() != "Реєстрація" && Context.Request.Cookies["un"] == null)
             {
                 <a class="nav-link text-dark" asp-area="" asp-controller="SignIn" asp-action="SignIn">Увійти</a>
+            }
+            else if (Context.Request.Cookies["un"] != null)
+            {
+                <div class="current-user">
+                    <a class="nav-link text-dark" href="#">@Context.Request.Cookies["un"].ToString()</a>
+                    <div class="logged-user-menu">
+                        <a href="#">Додати оголошення</a>
+                        <a href="#">Мої оголошення</a>
+                        <a href="@Url.Action("DeleteCookie", "SignIn")">Вийти</a>
+                    </div>
+                </div>
             }
         </div>
     </div>
 </nav>
+
+<script>
+    var blocked = false;    //  block click for animation
+    document.addEventListener("DOMContentLoaded", function () {
+
+        if (blocked === true) return;
+        
+        var userLink = document.querySelector(".current-user > .nav-link");
+        var userMenu = document.querySelector(".current-user > .logged-user-menu");
+
+        // username click
+        userLink.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            blocked = true;     //  block
+            
+            if (userMenu.style.display === "flex") {    //  hide menu
+                userMenu.classList.remove("fade-in");
+                userMenu.classList.add("fade-out");
+                setTimeout(function () {
+                    userMenu.style.display = "none";
+                }, 300);
+            } else {                                    //  show menu
+                userMenu.style.display = "flex";
+                userMenu.classList.remove("fade-out");
+                userMenu.classList.add("fade-in");
+            }
+            blocked = false;    //  unblock
+        });
+    });
+</script>

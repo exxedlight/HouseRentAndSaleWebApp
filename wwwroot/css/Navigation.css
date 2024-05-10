@@ -6,12 +6,88 @@
     font-size: large;
 }
 
-    .nav-item .nav-link:hover {
-        background: rgba(235, 155, 52, .4);
-        border-radius: 10px;
-    }
+.nav-item .nav-link:hover {
+    background: rgba(235, 155, 52, .4);
+    border-radius: 10px;
+}
 
 .nav-link:hover {
     background: rgba(52, 235, 55, .4);
     border-radius: 10px;
+}
+
+.current-user {
+    height: 100%;
+}
+    .current-user a{
+        border: 2px solid transparent;
+    }
+    .current-user a:hover {
+        background: transparent;
+        border: 2px dashed rgba(0,0,0,.4);
+        box-sizing: border-box;
+    }
+
+.logged-user-menu {
+    display: none;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 15px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    backdrop-filter: blur(5px);
+    border: 1px solid gray;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+    .logged-user-menu a {
+        color: black;
+        text-decoration: none;
+        font-size: large;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+        .logged-user-menu a:hover {
+            background: rgba(0,0,0, .3);
+        }
+
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+}
+
+.fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
 }
