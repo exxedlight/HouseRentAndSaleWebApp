@@ -1,7 +1,7 @@
 ﻿using Azure.Core;
 using HouseRentAndSaleWebApp.DB.Entites;
 using HouseRentAndSaleWebApp.Models;
-using ImmovablesSales.DB;
+using HouseRentAndSale.DB;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
