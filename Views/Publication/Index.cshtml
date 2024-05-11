@@ -6,10 +6,12 @@
 <link rel="stylesheet" href="~/css/SearchFilter.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/NewPublication.css" asp-append-version="true" />
 
-@if (!string.IsNullOrEmpty(Model.form_message))
+@*if (!string.IsNullOrEmpty(Model.form_message))
 {
     <p style="color: red; font-size: large; width: 100%; text-align:right;">@Model.form_message</p>
-}
+}*@
+
+<p id="message-p" style="color: red; font-size: large; width: 100%; text-align:right;"></p>
 
 <form class="publication-form" enctype="multipart/form-data" asp-action="Publish" asp-controller="Publication" method="post">
     <div class="wrapper-row">
@@ -29,15 +31,15 @@
                 </div>
             </div>
 
-            <input type="file" accept=".jpg" title="Оберіть зображення" multiple name="images" value="@Model.images" />
+            <input type="file" accept=".jpg" title="Оберіть зображення" multiple name="images" value="@Model.images" required />
         </div>
 
         <!-- main information and selects -->
         <div class="wrapper-selects">
             <h1>Інформація про нерухомість</h1>
 
-            <input type="text" placeholder="Заголовок" name="title" asp-for="title" value="@Model.title" />
-            <input type="text" placeholder="Адреса" name="adres" asp-for="adres" value="@Model.title" />
+            <input type="text" placeholder="Заголовок" name="title" asp-for="title" value="@Model.title" required />
+            <input type="text" placeholder="Адреса" name="adres" asp-for="adres" value="@Model.title" required />
             <br />
             <div class="search-filter">
                 <select name="operation_type" asp-for="operation_type">
@@ -87,11 +89,11 @@
             </div>
             <br />
 
-            <input type="text" placeholder="Площа" name="square" asp-for="square" value="@Model.square" />
-            <input type="text" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" />
+            <input type="text" placeholder="Площа" name="square" asp-for="square" value="@Model.square" required />
+            <input type="text" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" required />
 
             <br />
-            <input type="text" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" />
+            <input type="text" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" required />
         </div>
 
     </div>
@@ -100,11 +102,19 @@
 
     <!-- rest information -->
     <div class="wrapper-rest">
-        <textarea placeholder="Опис оголошення" name="about">@Model.about</textarea>
+        <textarea placeholder="Опис оголошення" name="about" required>@Model.about</textarea>
         <button type="submit"><p>Зберегти оголошення</p></button>
     </div>
 
 </form>
+
+
+
+
+
+
+
+
 
 <script>
     const fileInput = document.querySelector('input[type="file"]');
@@ -159,5 +169,46 @@
         files.forEach(file => dataTransfer.items.add(file));
         fileInput.files = dataTransfer.files;
     }
+
+
+
+    //  AJAX form data
+
+    $(document).ready(function () {
+
+        const message_p = document.getElementById('message-p');
+
+        $('.publication-form').submit(function (event) {
+            event.preventDefault();
+            
+            var formData = new FormData($(this)[0]);
+
+            $.ajax({
+                url: $(this).attr('action'),
+                type: $(this).attr('method'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    
+
+                    if (data === 'success') {
+                        message_p.style.color = 'Green';
+                        message_p.innerText = 'Оголошення опубліковано';
+                    }
+                    else {
+                        message_p.style.color = 'Red';
+                        message_p.innerText = data;
+                    }
+
+                    // Прокрутка вгору                    
+                    $('html, body').scrollTop(0);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr, status, error);
+                }
+            });
+        });
+    });
 
 </script>
