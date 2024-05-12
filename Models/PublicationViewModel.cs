@@ -13,6 +13,5 @@
         public string price { get; set; } = "";
         public string about { get; set; } = "";
         public List<IFormFile> images { get; set; } = new List<IFormFile>();
-        public string? form_message { get; set; } = null;
     }
 }

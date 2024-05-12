@@ -1,0 +1,59 @@
+﻿@model PostsViewModel
+@{
+    ViewData["Title"] = "Оголошення";
+}
+
+<link rel="stylesheet" href="/css/PostsList.css" asp-append-version="true" />
+
+
+<div class="wrapper">
+
+    <div class="filter">
+        <form class="search-filter">
+            <h1>Фільтр</h1>
+            @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/BuildTypePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/ItemStatePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/AreaPartial.cshtml", "asp-for=\"area\"")
+
+            <br />
+
+            <h3>Ціна</h3>
+            <input type="number" min="0" placeholder="Від" name="price_min" autocomplete="off" />
+            <input type="number" min="0" placeholder="До" name="price_max" autocomplete="off" />
+
+            <br />
+
+            <h3>Площа</h3>
+            <input type="number" min="0" placeholder="Від" name="square_min" autocomplete="off" />
+            <input type="number" min="0" placeholder="До" name="square_max" autocomplete="off" />
+
+            <br />
+
+            <h3>Поверх</h3>
+            <input type="number" min="0" placeholder="Від" name="floor_min" autocomplete="off" />
+            <input type="number" min="0" placeholder="До" name="floor_max" autocomplete="off" />
+
+            <br />
+
+            <button type"submit"><p>Застосувати</p></button>
+
+            <br />
+
+        </form>
+    </div>
+
+    <div class="list">
+        <h1>Доступні оголошення</h1>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        document.querySelector('select[name="build_type"] option[value="@Model.build_type"]').selected = true;
+        document.querySelector('select[name="operation_type"] option[value="@Model.operation_type"]').selected = true;
+        document.querySelector('select[name="item_state"] option[value="@Model.item_state"]').selected = true;
+        document.querySelector('select[name="area"] option[value="@Model.area"]').selected = true;
+    });
+</script>

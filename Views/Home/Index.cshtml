@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HomeSearchViewModel
+@{
     ViewData["Title"] = "Головна";
 }
 
@@ -6,4 +7,23 @@
     <h1 class="display-4">Знайти доступне житло</h1>
 </div>
 
-@await Html.PartialAsync("~/Views/Partial/PartSearchFilter.cshtml")
+<div class="">
+    <form class="search-filter">
+
+        @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
+        @await Html.PartialAsync("~/Views/Partial/Filters/BuildTypePartial.cshtml")
+        @await Html.PartialAsync("~/Views/Partial/Filters/ItemStatePartial.cshtml")
+        @await Html.PartialAsync("~/Views/Partial/Filters/AreaPartial.cshtml")
+
+        <button type="submit"><p>Шукати</p></button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        document.querySelector('select[name="build_type"] option[value="1"]').selected = true;
+        document.querySelector('select[name="operation_type"] option[value="1"]').selected = true;
+        document.querySelector('select[name="item_state"] option[value="new"]').selected = true;
+        document.querySelector('select[name="area"] option[value="1"]').selected = true;
+    });
+</script>

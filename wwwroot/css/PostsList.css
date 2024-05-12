@@ -1,0 +1,33 @@
+﻿.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.wrapper h1{
+    width: 100%;
+    text-align: center;
+}
+.filter{
+    min-width: 24%;
+    width: 24%;
+    border: 1px solid rgb(156, 156, 156);
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,.2) 5px 5px;
+}
+    .filter input {
+        width: 95%;
+        border-radius: 5px;
+        background: rgba(199, 240, 239, .3);
+        border: 2px solid rgb(156, 156, 156);
+        font-size: large;
+        margin-bottom: 5px;
+    }
+.list {
+    min-width: 74%;
+    width: 74%;
+    border: 1px solid rgb(156, 156, 156);
+    border-radius: 10px;
+    box-shadow: rgba(0,0,0,.2) 5px 5px;
+}
+

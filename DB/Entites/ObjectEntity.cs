@@ -14,5 +14,6 @@
         public int objtypeId { get; set; }
         public int operation_type { get; set; }
         public string state { get; set; }
+        public DateTime creation_datetime { get; set; }
     }
 }

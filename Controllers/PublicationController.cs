@@ -96,7 +96,8 @@ namespace HouseRentAndSaleWebApp.Controllers
                         userId = currentUser.Id,
                         objtypeId = model.build_type,
                         operation_type = model.operation_type,
-                        areaId = model.area
+                        areaId = model.area,
+                        creation_datetime = DateTime.Now
                     };
 
                     context.Objects.Add(obj);

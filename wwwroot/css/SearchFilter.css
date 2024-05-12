@@ -1,41 +1,45 @@
 ﻿.search-filter {
     width: 100%;
     box-sizing: border-box;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-    .search-filter form {
-        width: 100%;
-        height: max-content;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .search-filter h3 {
+        width: 80%;
+        text-align: left;
     }
 
-        .search-filter select {
-            background: rgba(199, 240, 239, .3);
-            font-size: large;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            height: 40px;
+    .search-filter select {
+        width: 95%;
+        background: rgba(199, 240, 239, .3);
+        font-size: large;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        height: 40px;
+    }
+
+        .search-filter select option {
+            text-align: left;
         }
 
-            .search-filter select option {
-                text-align: left;
-            }
+    .search-filter button {
+        width: 95%;
+        background: rgba(66, 117, 116, .4);
+        border-radius: 20px;
+        font-weight: bolder;
+        font-size: larger;
+        padding: 0;
+        margin: 0;
+        height: 50px;
+    }
 
-        .search-filter button {
-            background: rgba(66, 117, 116, .4);
-            border-radius: 20px;
-            font-weight: bolder;
-            font-size: larger;
-            padding: 0;
+        .search-filter button p {
             margin: 0;
-            height: 50px;
+            padding: 0;
+            text-align: center;
         }
-
-            .search-filter button p {
-                margin: 0;
-                padding: 0;
-                text-align: center;
-            }
