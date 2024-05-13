@@ -24,10 +24,122 @@
         margin-bottom: 5px;
     }
 .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     min-width: 74%;
     width: 74%;
     border: 1px solid rgb(156, 156, 156);
     border-radius: 10px;
     box-shadow: rgba(0,0,0,.2) 5px 5px;
+    max-height: 800px;
+    overflow-y: scroll;
+    background: cross-fade(1,1,1);
 }
+    .list h3 {
+        background: rgb(248, 248, 248);
+        color: rgb(109, 109, 109);
+        height: 90%;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-self: center;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: default;
+    }
 
+.single-post {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2px;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0,.2) 2px 2px;
+    max-height: 200px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.single-post:hover{
+    background: rgba(0,0,0,.2);
+    cursor: pointer;
+}
+    .single-post .img-data {
+        min-width: 30%;
+        max-width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    .single-post img {
+        width: auto;
+        max-width: 95%;
+        height: 100%;
+    }
+
+.single-post .text-data{
+    min-width: 70%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.single-post h6{
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+    font-weight: bold;
+}
+.single-post text{
+
+}
+    .single-post p {
+        text-align: right;
+        vertical-align: bottom;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: default;
+    }
+
+.pages {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    vertical-align: central;
+    height: 50px;
+}
+    .pages .page-number {
+        margin: 0 10px 0 10px;
+        cursor: default;
+    }
+    .pages button {
+        width: 20%;
+        max-height: 50px;
+        background: transparent;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 20px;
+        background: rgba(0,0,0,.2);
+    }
+    .pages button:hover{
+        background: rgb(0,0,0,.5);
+    }
+    .pages button p {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+    }

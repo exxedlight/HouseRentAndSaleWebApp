@@ -26,6 +26,7 @@
         //  publications list
         public List<PublicationViewModel> Publications { get; set; } = new List<PublicationViewModel>();
 
-        //  err
+        //  page
+        public int page = 1;
     }
 }

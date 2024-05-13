@@ -45,9 +45,37 @@
 
     <div class="list">
         <h1>Доступні оголошення</h1>
+
+        @foreach (PublicationViewModel item in Model.Publications)
+        {
+            <div class="single-post">
+
+            <div class="img-data">
+                <img src="/img/no_image.jpg" />
+            </div>
+            <div class="text-data">
+                <h6>Title</h6>
+                <text>Text about</text>
+                <p>50000$</p>
+            </div>
+
+        </div>
+        }
+        @if(Model.Publications.Count == 0)
+        {
+            <h3>Немає оголошень за цим фільтром</h3>
+        }
+
+        <div class="pages">
+            <button><p><<</p></button>
+            <p class="page-number">Сторінка @Model.page</p>
+            <button><p>>></p></button>
+        </div>
     </div>
 
 </div>
+
+
 
 <script>
     $(document).ready(function () {
