@@ -9,7 +9,7 @@
 <div class="wrapper">
 
     <div class="filter">
-        <form class="search-filter">
+        <form class="search-filter" asp-action="Filter" asp-controller="Posts" method="post">
             <h1>Фільтр</h1>
             @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
             @await Html.PartialAsync("~/Views/Partial/Filters/BuildTypePartial.cshtml")
@@ -19,23 +19,24 @@
             <br />
 
             <h3>Ціна</h3>
-            <input type="number" min="0" placeholder="Від" name="price_min" autocomplete="off" />
-            <input type="number" min="0" placeholder="До" name="price_max" autocomplete="off" />
+            <input type="number" min="0" placeholder="Від" name="price_min" asp-for="price_min" autocomplete="off" value="@Model.price_min" />
+            <input type="number" min="0" placeholder="До" name="price_max" asp-for="price_max" autocomplete="off" value="@Model.price_max" />
 
             <br />
 
             <h3>Площа</h3>
-            <input type="number" min="0" placeholder="Від" name="square_min" autocomplete="off" />
-            <input type="number" min="0" placeholder="До" name="square_max" autocomplete="off" />
+            <input type="number" min="0" placeholder="Від" name="square_min" asp-for="square_min" autocomplete="off" value="@Model.square_min" />
+            <input type="number" min="0" placeholder="До" name="square_max" asp-for="square_max" autocomplete="off" value="@Model.square_max" />
 
             <br />
 
             <h3>Поверх</h3>
-            <input type="number" min="0" placeholder="Від" name="floor_min" autocomplete="off" />
-            <input type="number" min="0" placeholder="До" name="floor_max" autocomplete="off" />
+            <input type="number" min="0" placeholder="Від" name="floor_min" asp-for="floor_min" autocomplete="off" value="@Model.floor_min" />
+            <input type="number" min="0" placeholder="До" name="floor_max" asp-for="floor_max" autocomplete="off" value="@Model.floor_max" />
 
             <br />
 
+            <input type="hidden" name="page" value="@Model.page" />
             <button type"submit"><p>Застосувати</p></button>
 
             <br />
@@ -46,31 +47,39 @@
     <div class="list">
         <h1>Доступні оголошення</h1>
 
-        @foreach (PublicationViewModel item in Model.Publications)
-        {
-            <div class="single-post">
+        <div class="list-posts">
 
-            <div class="img-data">
-                <img src="/img/no_image.jpg" />
-            </div>
-            <div class="text-data">
-                <h6>Title</h6>
-                <text>Text about</text>
-                <p>50000$</p>
-            </div>
+            @foreach (PublicationViewModel item in Model.Publications)
+            {
+                <div class="single-post">
 
+                    <div class="img-data">
+                        <img src="@Html.Raw(item.images_pathes[0])" />
+                    </div>
+                    <div class="text-data">
+                        <h6>@item.title</h6>
+                        <text>Адреса: @item.adres</text>
+                        <text>Опис: @(item.about.Length > 50 ? item.about.Substring(0, 50) : item.about)</text>
+                        <p>@item.price грн.</p>
+                    </div>
+
+                </div>
+            }
+            @if (Model.Publications.Count == 0)
+            {
+                <h3>Немає оголошень за цим фільтром</h3>
+            }
+            else
+            {
+                <div class="pages">
+                    <button><p>&#8592;</p></button>
+                    <p class="page-number">Сторінка @Model.page</p>
+                    <button><p>&#8594;</p></button>
+                </div>
+            }
         </div>
-        }
-        @if(Model.Publications.Count == 0)
-        {
-            <h3>Немає оголошень за цим фільтром</h3>
-        }
 
-        <div class="pages">
-            <button><p><<</p></button>
-            <p class="page-number">Сторінка @Model.page</p>
-            <button><p>>></p></button>
-        </div>
+
     </div>
 
 </div>

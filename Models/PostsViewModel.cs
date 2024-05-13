@@ -14,14 +14,14 @@
 
 
         // rest filters
-        public decimal price_min { get; set; } = 0;
-        public decimal price_max { get; set; } = decimal.MaxValue;
+        public decimal? price_min { get; set; } = null;
+        public decimal? price_max { get; set; } = null;
 
-        public double square_min { get; set; } = 0;
-        public double square_max { get; set; } = double.MaxValue;
+        public double? square_min { get; set; } = null;
+        public double? square_max { get; set; } = null;
 
-        public int floor_min { get; set; } = 0;
-        public int floor_max { get; set; } = int.MaxValue;
+        public int? floor_min { get; set; } = null;
+        public int? floor_max { get; set; } = null;
 
         //  publications list
         public List<PublicationViewModel> Publications { get; set; } = new List<PublicationViewModel>();
