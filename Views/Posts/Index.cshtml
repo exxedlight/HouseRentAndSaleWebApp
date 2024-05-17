@@ -61,6 +61,9 @@
                         <text>Адреса: @item.adres</text>
                         <text>Опис: @(item.about.Length > 50 ? item.about.Substring(0, 50) : item.about)</text>
                         <p>@item.price грн.</p>
+
+                        <input type="hidden" value="@item.Id" />
+
                     </div>
 
                 </div>

@@ -25,9 +25,11 @@ namespace HouseRentAndSaleWebApp.Controllers
         }
 
         //  search from Home
-        public IActionResult AppendFilter(HomeSearchViewModel model)
+        [HttpPost]
+        public IActionResult AppendFilter(HomeSearchViewModel home_model)
         {
-            return View("Index", new PostsViewModel(model));
+            PostsViewModel model = new PostsViewModel(home_model);
+            return Filter(model);
         }
 
         //  rent and sale from navigation
@@ -47,8 +49,7 @@ namespace HouseRentAndSaleWebApp.Controllers
         }
         //  ---
 
-
-        [HttpPost]
+        [HttpPost]  //  filter publications from DB in list
         public IActionResult Filter(PostsViewModel model)
         {
             List<ObjectEntity>? items;
@@ -100,10 +101,16 @@ namespace HouseRentAndSaleWebApp.Controllers
         }
 
 
-        // GET: PostsController/Details/5
+        [HttpPost]
         public ActionResult Details(int id)
         {
-            return View();
+            DetailsViewModel model = new DetailsViewModel
+            {
+
+            };
+
+
+            return View("SinglePost", model);
         }
 
         

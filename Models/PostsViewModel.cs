@@ -7,7 +7,7 @@
         {
             area = model.area;
             build_type = model.build_type;
-            operation_type = model.build_type;
+            operation_type = model.operation_type;
             item_state = model.item_state;
         }
         public PostsViewModel() { }

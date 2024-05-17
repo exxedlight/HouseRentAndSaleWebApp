@@ -1,0 +1,62 @@
+﻿@model DetailsViewModel
+@{
+    ViewData["Title"] = "Деталі";
+}
+
+<link rel="stylesheet" href="~/css/SearchFilter.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/NewPublication.css" asp-append-version="true" />
+
+
+<div class="publication-form">
+    <div class="wrapper-row">
+
+        <!-- img prewiev and load -->
+        <div class="wrapper-img">
+            <div class="images">
+                <img id="main-image" src=@(Model.images.Count > 0 ? @Model.images[0].Name : "/img/no_image.jpg") />
+                <div class="vert-gallery">
+                    @foreach (IFormFile file in Model.images)
+                    {
+                        <div class="gallery-element">
+                            <img src="@file.FileName" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- main information and selects -->
+        <div class="wrapper-selects">
+            <h1>Інформація про нерухомість</h1>
+
+            <p class="input-info">@Model.title</p>
+            <br />
+
+            <p class="input-info">@Model.area</p>
+            <p class="input-info">@Model.adres</p>
+            <br />
+            
+            <p class="input-info">@Model.operation_type</p>
+            <p class="input-info">@Model.build_type</p>
+            <p class="input-info">@Model.item_state</p>
+            <br />
+
+            <p class="input-info">@Model.square</p>
+            <p class="input-info">@Model.floor</p>
+            <br />
+
+            <p class="input-info">@Model.price</p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- rest information -->
+    <div class="wrapper-rest">
+        <textarea placeholder="Опис оголошення" name="about" required readonly>@Model.about</textarea>
+        <button type="submit"><p>Зберегти оголошення</p></button>
+    </div>
+
+</div>
