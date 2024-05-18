@@ -1,20 +1,23 @@
-﻿.wrapper{
+﻿.wrapper {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.wrapper h1{
-    width: 100%;
-    text-align: center;
-}
-.filter{
+
+    .wrapper h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+.filter {
     min-width: 24%;
     width: 24%;
     border: 1px solid rgb(156, 156, 156);
     border-radius: 10px;
     box-shadow: rgba(0,0,0,.2) 5px 5px;
 }
+
     .filter input {
         width: 95%;
         border-radius: 5px;
@@ -23,6 +26,7 @@
         font-size: large;
         margin-bottom: 5px;
     }
+
 .list {
     display: flex;
     flex-direction: column;
@@ -37,6 +41,7 @@
     max-height: 800px;
     overflow-y: scroll;
 }
+
     .list .list-posts h3 {
         background: rgb(248, 248, 248);
         color: rgb(109, 109, 109);
@@ -51,6 +56,7 @@
         border-radius: 10px;
         cursor: default;
     }
+
     .list .list-posts {
         width: 100%;
         height: 90%;
@@ -60,26 +66,34 @@
         align-items: center;
     }
 
-    .single-post {
-        width: 95%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 2px;
-        box-sizing: border-box;
-        box-shadow: rgba(0,0,0,.2) 2px 2px;
-        max-height: 200px;
-        border: 1px solid gray;
-        border-radius: 10px;
-        margin-bottom: 5px;
-    }
-.single-post:hover{
-    background: rgba(0,0,0,.2);
-    cursor: pointer;
+.single-post {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2px;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0,.2) 2px 2px;
+    height: max-content;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: rgb(0,0,0);
+    text-decoration: none;
 }
+
+    .single-post:hover {
+        background: rgba(0,0,0,.2);
+        cursor: pointer;
+        color: rgb(0,0,0);
+        text-decoration: none;
+    }
+
     .single-post .img-data {
-        min-width: 30%;
+        align-self: center;
+        min-width: 10%;
         max-width: 30%;
+        height: max-content;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -93,23 +107,27 @@
         height: 100%;
     }
 
-.single-post .text-data{
-    min-width: 70%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.single-post h6{
-    width: 100%;
-    height: auto;
-    word-wrap: break-word;
-    font-weight: bold;
-}
-.single-post text{
+    .single-post .text-data {
+        min-width: 70%;
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-x: hidden;
+    }
 
-}
+    .single-post h6 {
+        width: 100%;
+        height: auto;
+        word-wrap: break-word;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .single-post text {
+    }
+
     .single-post p {
         text-align: right;
         vertical-align: bottom;
@@ -127,10 +145,12 @@
     vertical-align: central;
     height: 50px;
 }
+
     .pages .page-number {
         margin: 0 10px 0 10px;
         cursor: default;
     }
+
     .pages button {
         width: 20%;
         max-height: 50px;
@@ -143,11 +163,13 @@
         border-radius: 20px;
         background: rgba(0,0,0,.2);
     }
-    .pages button:hover{
-        background: rgb(0,0,0,.5);
-    }
-    .pages button p {
-        min-height: 100%;
-        margin: 0;
-        padding: 0;
-    }
+
+        .pages button:hover {
+            background: rgb(0,0,0,.5);
+        }
+
+        .pages button p {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }

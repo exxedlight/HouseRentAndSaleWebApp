@@ -51,22 +51,29 @@
 
             @foreach (PublicationViewModel item in Model.Publications)
             {
-                <div class="single-post">
+                <form class="single-post" asp-action="Details" asp-controller="Posts" method="post">
 
                     <div class="img-data">
                         <img src="@Html.Raw(item.images_pathes[0])" />
                     </div>
                     <div class="text-data">
                         <h6>@item.title</h6>
-                        <text>Адреса: @item.adres</text>
-                        <text>Опис: @(item.about.Length > 50 ? item.about.Substring(0, 50) : item.about)</text>
+                        <em style="text-align: right;">@item.area_inf</em>
+                        <text><b>Адреса:</b> @item.adres</text>
+
+
+                        <text><b>Тип:</b> @item.objtype_inf</text>
+                        <text><b>Дія:</b> @item.operation_inf</text>
+                        <text><b>Стан:</b> @item.state_inf</text>
+
+                        <text><b>Опис:</b> @(item.about.Length > 30 ? item.about.Substring(0, 30) : item.about)</text>
                         <p>@item.price грн.</p>
 
-                        <input type="hidden" value="@item.Id" />
+                        <input type="hidden" name="id" value="@item.Id" />
 
                     </div>
 
-                </div>
+                </form>
             }
             @if (Model.Publications.Count == 0)
             {
@@ -74,11 +81,12 @@
             }
             else
             {
-                <div class="pages">
-                    <button><p>&#8592;</p></button>
+                <form class="pages">
+                    <input type="hidden" name="model" value="@Model" />
+                    <button type="submit" name="action" value="prev"><p>&#8592;</p></button>
                     <p class="page-number">Сторінка @Model.page</p>
-                    <button><p>&#8594;</p></button>
-                </div>
+                    <button type="submit" name="action" value="next"><p>&#8594;</p></button>
+                </form>
             }
         </div>
 
@@ -91,9 +99,22 @@
 
 <script>
     $(document).ready(function () {
-        document.querySelector('select[name="build_type"] option[value="@Model.build_type"]').selected = true;
+        document.querySelector('select[name="objtypeId"] option[value="@Model.objtypeId"]').selected = true;
         document.querySelector('select[name="operation_type"] option[value="@Model.operation_type"]').selected = true;
-        document.querySelector('select[name="item_state"] option[value="@Model.item_state"]').selected = true;
-        document.querySelector('select[name="area"] option[value="@Model.area"]').selected = true;
+        document.querySelector('select[name="state"] option[value="@Model.state"]').selected = true;
+        document.querySelector('select[name="areaId"] option[value="@Model.areaId"]').selected = true;
+
+
+        document.querySelectorAll('.single-post').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                event.preventDefault();
+                console.log('123');
+                let form = element.closest('form');
+                if (form) {
+                    form.submit();
+                }
+            });
+        });
+
     });
 </script>

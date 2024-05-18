@@ -45,11 +45,11 @@
             </div>
             <br />
 
-            <input type="text" placeholder="Площа" name="square" asp-for="square" value="@Model.square" required />
-            <input type="text" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" required />
+            <input type="number" min="0" placeholder="Площа" name="square" asp-for="square" value="@Model.square" required />
+            <input type="number" min="0" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" required />
 
             <br />
-            <input type="text" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" required />
+            <input type="number" min="0" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" required />
         </div>
 
     </div>

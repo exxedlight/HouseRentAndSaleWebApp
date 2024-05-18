@@ -12,7 +12,21 @@ namespace HouseRentAndSaleWebApp.DB.Entites
         public ObjectInfoEntity() { }
         public ObjectInfoEntity(ObjectEntity basic)
         {
-            using(Context context = new Context())
+            this.Id = basic.Id;
+            this.title = basic.title;
+            this.adres = basic.adres;
+            this.square = basic.square;
+            this.floor = basic.floor;
+            this.price = basic.price;
+            this.about = basic.about;
+            this.userId = basic.userId;
+            this.areaId = basic.areaId;
+            this.objtypeId = basic.objtypeId;
+            this.operation_type = basic.operation_type;
+            this.state = basic.state;
+            this.creation_datetime = basic.creation_datetime;
+
+            using (Context context = new Context())
             {
                 area_inf = context.Regions.First(x => x.Id == basic.areaId).region_name;
                 objtype_inf = context.ObjType.First(x => x.Id == basic.objtypeId).name;

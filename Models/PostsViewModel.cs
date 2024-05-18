@@ -5,10 +5,10 @@
         //  copy from HomeSearch
         public PostsViewModel(HomeSearchViewModel model) 
         {
-            area = model.area;
-            build_type = model.build_type;
+            areaId = model.areaId;
+            state = model.state;
             operation_type = model.operation_type;
-            item_state = model.item_state;
+            objtypeId = model.objtypeId;
         }
         public PostsViewModel() { }
 

@@ -57,10 +57,10 @@ namespace HouseRentAndSaleWebApp.Controllers
             {
                 items = context.Objects.Where(x =>
 
-                (model.area != -1 ? x.areaId == model.area : true) &&
+                (model.areaId != -1 ? x.areaId == model.areaId : true) &&
                 (model.operation_type != -1 ? x.operation_type == model.operation_type : true) &&
-                (model.item_state != "exist" ? x.state == model.item_state : true) && 
-                (model.build_type != -1 ? x.objtypeId == model.build_type : x.objtypeId != 7) &&
+                (model.state != "exist" ? x.state == model.state : true) && 
+                (model.objtypeId != -1 ? x.objtypeId == model.objtypeId : x.objtypeId != 7) &&
 
                 (model.price_min != null ? x.price >= model.price_min : true) &&
                 (model.price_max != null ? x.price <= model.price_max : true) && 
