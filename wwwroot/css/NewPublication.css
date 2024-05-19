@@ -15,7 +15,7 @@
     padding: 20px;
     box-sizing: border-box;
     box-shadow: rgba(0,0,0, .2) 10px 10px;
-    background: rgb(234, 234, 234);
+    background: rgba(234, 234, 234, .5);
     align-items: center;
     height: auto;
 }
@@ -27,14 +27,16 @@
         justify-items: center;
         vertical-align: central;
         align-items: center;
+        width: 100%;
+        height: 100%;
     }
 
-    .wrapper-img img {
+    .wrapper-img .images img {
         max-height: 600px;
-        width: auto;
+        height: auto;
+        width: 80%;
         max-width: 80%;
-        height: fit-content;
-        
+        justify-self: flex-start;
     }
     .wrapper-img input {
         margin-top: 20px;
@@ -51,6 +53,7 @@
         width: 20%;
         overflow-y: scroll;
         direction: rtl;
+        height: 100%;
     }
         .wrapper-img .images .vert-gallery img {
             width: 100%;
@@ -70,17 +73,17 @@
                 right: 0%;
                 background: transparent;
                 backdrop-filter: blur(10px);
-                border-radius: 50%; /* Скругляем границы, чтобы сделать кнопку круглой */
+                border-radius: 50%;
                 padding: 0;
                 margin: 0;
                 box-sizing: border-box;
                 font-size: 12px;
-                width: 20px; /* Задайте ширину и высоту кнопки по вашему усмотрению */
+                width: 20px;
                 height: 20px;
-                line-height: 20px; /* Выравниваем текст по центру кнопки */
-                text-align: center; /* Выравниваем текст по центру кнопки */
+                line-height: 20px;
+                text-align: center;
                 cursor: pointer;
-                border: none; /* Удаляем границу у кнопки */
+                border: none;
             }
 
                 .wrapper-img .images .vert-gallery .gallery-element button:hover {
@@ -128,7 +131,7 @@
     padding: 20px;
     box-sizing: border-box;
     box-shadow: rgba(0,0,0, .2) 10px 10px;
-    background: rgb(234, 234, 234);
+    background: rgba(234, 234, 234, .5);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -176,31 +179,36 @@
         border-radius: 10px;
         padding: 10px;
         box-sizing: border-box;
+        background: rgba(199, 240, 239, .8);
         box-shadow: rgba(0,0,0, .3) 10px 10px;
         resize: none;
         min-height: 400px;
+        color: 
+    }
+    .wrapper-rest textarea::placeholder{
+        color: gray;
     }
 
     .wrapper-rest button {
         display: flex;
         justify-content: center;
-        align-items: center; /* Центрируем текст по вертикали */
+        align-items: center;
 
         align-self: flex-end;
 
-        background: rgb(175, 222, 224);
+        background: rgba(255,255,255,.5);
 
         width: 30%;
         height: 80px;
         text-align: center;
         padding: 10px;
         margin-top: 20px;
-        border-radius: 20%;
+        border-radius: 20px;
         box-sizing: border-box;
         box-shadow: rgba(0,0,0, .3) 10px 10px;
         font-size: x-large;
         font-weight: 600;
     }
         .wrapper-rest button:hover {
-            background: rgb(142, 178, 180);
+            background: rgb(65, 173, 52, .7);
         }

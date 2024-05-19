@@ -1,0 +1,27 @@
+﻿@model PostsViewModel
+@{
+    ViewData["Title"] = "Мої оголошення";
+}
+
+<link rel="stylesheet" href="/css/PostsList.css" asp-append-version="true" />
+
+<div class="wrapper">
+
+    <div class="list" style="width: 100%;">
+        <h1>Доступні оголошення</h1>
+
+        <div class="list-posts">
+
+            @await Html.PartialAsync("~/Views/Posts/Partial/PublicationsListWithButtonsPartial.cshtml", Model)
+
+            @if (Model.Publications.Count == 0)
+            {
+                <h3>У вас ще немає оголошень!</h3>
+            }
+
+        </div>
+
+
+    </div>
+
+</div>

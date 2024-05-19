@@ -1,0 +1,56 @@
+﻿.wrapper-selects h1{
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 0 white;
+}
+.p-title {
+    font-size: large;
+    font-weight: 500;
+}
+.p-info{
+    border: 1px solid black;
+    padding: 10px 20px 10px 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    height: max-content;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.p-info i{
+    font-size: large;
+}
+.wrapper-rest text {
+    width: 100%;
+    border: 2px solid rgba(0,0,0,.6);
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: rgba(0,0,0, .3) 10px 10px;
+    resize: none;
+    min-height: 400px;
+    cursor: default;
+    background: rgb(193, 219, 215, .7);
+}
+.user-info {
+    border: 2px solid rgba(0,0,0,.4);
+    box-shadow: rgba(0,0,0, .3) 10px 10px;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 5px 0 10px 0;
+    background: rgb(35, 38, 69, 0.90);
+    color: white;
+}
+    .user-info .h5-info {
+        padding: 10px 20px 10px 20px;
+        box-sizing: border-box;
+        border-radius: 20px;
+        height: max-content;
+        word-wrap: break-word;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 2px solid rgba(0,0,0,.4);
+    }

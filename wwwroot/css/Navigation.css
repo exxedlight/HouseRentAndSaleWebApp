@@ -1,9 +1,17 @@
-﻿.navbar-brand {
-    font-weight: bold;
+﻿
+.navbar-brand {
+    font-weight: bolder;
+    color: rgb(255,255,255);
+    text-shadow: 1px 1px 1px black;
 }
+    .navbar-brand:hover {
+        text-decoration: none;
+        color: rgba(255,255,255, .6);
+    }
 
 .nav-link {
     font-size: large;
+    color: white;
 }
 
 .nav-item .nav-link:hover {
@@ -24,19 +32,21 @@
     }
     .current-user a:hover {
         background: transparent;
-        border: 2px dashed rgba(0,0,0,.4);
+        border: 2px dashed rgba(255,255,255,.4);
         box-sizing: border-box;
     }
 
 .logged-user-menu {
     display: none;
+    z-index: 100;
     flex-direction: column;
     text-align: left;
     border-radius: 15px;
     position: absolute;
     top: 100%;
     right: 0;
-    backdrop-filter: blur(5px);
+    background: rgba(0,0,0,.8);
+    backdrop-filter: blur(10px);
     border: 1px solid gray;
     padding-left: 20px;
     padding-right: 20px;
@@ -45,7 +55,7 @@
 }
 
     .logged-user-menu a {
-        color: black;
+        color: white;
         text-decoration: none;
         font-size: large;
         border-radius: 10px;
@@ -53,7 +63,7 @@
     }
 
         .logged-user-menu a:hover {
-            background: rgba(0,0,0, .3);
+            background: rgba(255,255,255, .3);
         }
 
 .fade-in {
@@ -90,4 +100,10 @@
         opacity: 0;
         transform: translateY(-10px);
     }
+}
+
+
+.navigation {
+    background: rgba(23, 27, 36, .5);
+    background-size: cover;
 }

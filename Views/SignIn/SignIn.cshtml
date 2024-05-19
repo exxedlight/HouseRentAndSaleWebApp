@@ -3,20 +3,22 @@
     ViewData["Title"] = "Вхід";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Вхід</h1>
+<div class="wrapper">
+    <div class="text-center">
+        <h1 class="display-4">Вхід</h1>
+    </div>
+
+    <form class="auth-form" asp-action="TryLogin" asp-controller="SignIn">
+        @if (Model.form_message != null)
+        {
+            <p style="color: @Model.form_massage_color">@Model.form_message</p>
+        }
+
+        <input type="text" placeholder="Логін" name="login" asp-for="login" required autocomplete="off" />
+        <input type="password" placeholder="Пароль" name="pass" asp-for="pass" required autocomplete="off" />
+
+        <button type="submit"><p>Увійти</p></button>
+
+        <a href="@Url.Action("SignUp", "SignIn")">Немає аккаунту?</a>
+    </form>
 </div>
-
-<form class="auth-form" asp-action="TryLogin" asp-controller="SignIn">
-    @if (Model.form_message != null)
-    {
-        <p style="color: @Model.form_massage_color">@Model.form_message</p>
-    }
-
-    <input type="text" placeholder="Логін" name="login" asp-for="login" required autocomplete="off" />
-    <input type="password" placeholder="Пароль" name="pass" asp-for="pass" required autocomplete="off" />
-
-    <button type="submit"><p>Увійти</p></button>
-    
-    <a href="@Url.Action("SignUp", "SignIn")">Немає аккаунту?</a>
-</form>

@@ -18,7 +18,21 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background: url('/img/bg3.jpg') no-repeat;
+    background-size: cover;
+}
+
+.wrapper {
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255, .25);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+body::before{
+    
 }
 
 .body-container {
@@ -27,4 +41,5 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: auto;
+    border-radius: 5%;
 }

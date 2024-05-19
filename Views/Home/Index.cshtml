@@ -3,20 +3,22 @@
     ViewData["Title"] = "Головна";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Знайти доступне житло</h1>
-</div>
+<div class="wrapper">
+    <div class="text-center">
+        <h1 class="display-4" style="text-shadow: 1px 1px 1px white;">Знайти доступне житло</h1>
+    </div>
 
-<div class="">
-    <form class="search-filter" asp-action="AppendFilter" asp-controller="Posts" method="post">
+    <div class="">
+        <form class="search-filter" asp-action="AppendFilter" asp-controller="Posts" method="post">
 
-        @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
-        @await Html.PartialAsync("~/Views/Partial/Filters/BuildTypePartial.cshtml")
-        @await Html.PartialAsync("~/Views/Partial/Filters/ItemStatePartial.cshtml")
-        @await Html.PartialAsync("~/Views/Partial/Filters/AreaPartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/BuildTypePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/ItemStatePartial.cshtml")
+            @await Html.PartialAsync("~/Views/Partial/Filters/AreaPartial.cshtml")
 
-        <button type="submit"><p>Шукати</p></button>
-    </form>
+            <button type="submit"><p>Шукати</p></button>
+        </form>
+    </div>
 </div>
 
 <script>

@@ -1,0 +1,55 @@
+﻿@model PostsViewModel
+
+@foreach (PublicationViewModel item in Model.Publications)
+{
+    <form class="single-post" asp-action="UpdateDelete" asp-controller="Posts" method="post" style="cursor: default;">
+
+        <div class="img-data">
+            <img src="@Html.Raw(item.images_pathes[0])" />
+        </div>
+        <div class="text-data">
+            <h6>@item.title</h6>
+            <em style="text-align: right;">@item.area_inf</em>
+            <text><b>Адреса:</b> @item.adres</text>
+
+            <text><b>Тип:</b> @item.objtype_inf</text>
+            <text><b>Дія:</b> @item.operation_inf</text>
+            <text><b>Стан:</b> @item.state_inf</text>
+
+            <text><b>Опис:</b> @(item.about.Length > 30 ? item.about.Substring(0, 30) + "..." : item.about)</text>
+            <p>@item.price грн.</p>
+
+            <input type="hidden" name="id" value="@item.Id" />
+
+            <div class="btn-block">
+                <button type="submit" name="action" value="updateTime"><p>Оновити час</p></button>
+                <button type="submit" name="action" value="delete"><p>Видалити</p></button>
+            </div>
+        </div>
+    </form>
+}
+
+<form id="detailsForm" action="@Url.Action("Details", "Posts")" method="post" target="_blank" style="display: none;">
+    <input type="hidden" name="id" id="detailsId" />
+</form>
+
+<script>
+    $(document).ready(function () {
+        document.querySelectorAll('.single-post').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+
+                if (event.target.tagName.toLowerCase() === 'button' || event.target.closest('button')) {
+                    return;
+                }
+                event.preventDefault();
+
+
+                let id = element.querySelector('input[name="id"]').value;
+
+
+                document.getElementById('detailsId').value = id;
+                document.getElementById('detailsForm').submit();
+            });
+        });
+    });
+</script>

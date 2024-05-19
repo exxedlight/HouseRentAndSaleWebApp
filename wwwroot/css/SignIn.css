@@ -30,4 +30,10 @@
         margin-top: 20px;
         font-size: large;
         text-align: center;
+        color: rgb(0, 255, 130);
+        background: rgba(0,0,0,.25) center;
     }
+
+.text-center {
+    text-shadow: 1px 1px 1px white;
+}

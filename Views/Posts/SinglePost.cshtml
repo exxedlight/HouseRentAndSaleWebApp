@@ -5,7 +5,9 @@
 
 <link rel="stylesheet" href="~/css/SearchFilter.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/NewPublication.css" asp-append-version="true" />
-
+<link rel="stylesheet" href="~/css/SinglePost.css" asp-append-version="true" />
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 <div class="publication-form">
     <div class="wrapper-row">
@@ -13,12 +15,12 @@
         <!-- img prewiev and load -->
         <div class="wrapper-img">
             <div class="images">
-                <img id="main-image" src=@(Model.images.Count > 0 ? @Model.images[0].Name : "/img/no_image.jpg") />
+                <img id="main-image" src=@(Model.images_pathes.Count > 0 ? @Model.images_pathes[0] : "/img/no_image.jpg") />
                 <div class="vert-gallery">
-                    @foreach (IFormFile file in Model.images)
+                    @foreach (string file in Model.images_pathes)
                     {
                         <div class="gallery-element">
-                            <img src="@file.FileName" />
+                            <img src="@file" />
                         </div>
                     }
                 </div>
@@ -29,34 +31,52 @@
         <div class="wrapper-selects">
             <h1>Інформація про нерухомість</h1>
 
-            <p class="input-info">@Model.title</p>
+            <p class="p-title">@Model.title</p>
             <br />
 
-            @*@<p class="input-info">@Model.area</p>
-            <p class="input-info">@Model.adres</p>
-            <br />
-            
-            <p class="input-info">@Model.operation_type</p>
-            <p class="input-info">@Model.build_type</p>
-            <p class="input-info">@Model.item_state</p>
-            <br />
-            *@
-            <p class="input-info">@Model.square</p>
-            <p class="input-info">@Model.floor</p>
+            <div class="p-info" style="background: rgba(255, 204, 0, .4)"><div><box-icon name="current-location"></box-icon><i> Регіон:</i></div> <b>@Model.area_inf</b></div>
+            <div class="p-info" style="background: rgba(255, 204, 0, .4)"><div><box-icon name="current-location"></box-icon><i> Адреса:</i></div> <b>@Model.adres</b></div>
             <br />
 
-            <p class="input-info">@Model.price</p>
+            <div class="p-info" style="background: rgba(153, 204, 255, .4)"><div><box-icon name="home-alt-2"></box-icon><i> Операція:</i></div> <b>@Model.operation_inf</b></div>
+            <div class="p-info" style="background: rgba(153, 204, 255, .4)"><div><box-icon name="home-alt-2"></box-icon><i> Тип:</i></div> <b>@Model.objtype_inf</b></div>
+            <div class="p-info" style="background: rgba(153, 204, 255, .4)"><div><box-icon name="home-alt-2"></box-icon><i> Стан:</i></div> <b>@Model.state_inf</b></div>
+            <br />
+
+            <div class="p-info" style="background: rgba(51, 204, 51, .4)"><div><box-icon name="shape-square"></box-icon><i> Площа:</i></div> <b>@Model.square м²</b></div>
+            <div class="p-info" style="background: rgba(51, 204, 51, .4)"><div><box-icon name="buildings"></box-icon><i> Поверх:</i></div> <b>@Model.floor</b></div>
+            <br />
+
+            <div class="p-info" style="background: rgba(204, 0, 255, .4); text-align: right;"><div><box-icon name='money-withdraw'></box-icon><i> Ціна:</i></div> <b>@Model.price грн.</b></div>
 
         </div>
 
     </div>
 
+    <br />
+    <div class="user-info">
+        <h5 class="h5-info"><i>Продавець:</i> @Model.author.PIB</h5>
+        <p class="p-info"><i>Дата публікації:</i> @Model.creation_datetime.ToString("dd.MM.yyyy")</p>
+        <h5 style="text-align: center;">Контактна інформація:</h5>
+        <p class="p-info" style="background: rgba(102, 153, 153, .5)"><i>Телефон:</i> @Model.author.phone</p>
+        <p class="p-info" style="background: rgba(102, 153, 153, .5)"><i>Скринька:</i> @Model.author.email</p>
+    </div>
 
 
     <!-- rest information -->
+    
     <div class="wrapper-rest">
-        <textarea placeholder="Опис оголошення" name="about" required readonly>@Model.about</textarea>
-        <button type="submit"><p>Зберегти оголошення</p></button>
+        <h5 style="align-self: flex-start; text-shadow: 1px 1px 0 white;">Опис оголошення:</h5>
+        <text>@Model.about</text>
     </div>
 
 </div>
+
+<script>
+    document.querySelectorAll('.gallery-element img').forEach(function (element) {
+        element.addEventListener('click', function (event) {
+            var mainImage = document.getElementById('main-image');
+            mainImage.src = element.src;
+        });
+    });
+</script>

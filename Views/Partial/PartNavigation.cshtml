@@ -1,4 +1,6 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+﻿<link rel="stylesheet" href="~/css/Navigation.css" asp-append-version="true" />
+
+<nav class="navigation navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3">
     <div class="container-fluid">
 
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RentAndSale</a>
@@ -12,30 +14,30 @@
             <ul class="navbar-nav flex-grow-1">
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Posts" asp-action="Sale">Купити</a>
+                    <a class="nav-link text-light" asp-area="" asp-controller="Posts" asp-action="Sale">Купити</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Posts" asp-action="Rent">Орендувати</a>
+                    <a class="nav-link text-light" asp-area="" asp-controller="Posts" asp-action="Rent">Орендувати</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Продати</a>
+                    <a class="nav-link text-light" asp-area="" asp-controller="" asp-action="">Для ВПО</a>
                 </li>
 
             </ul>
 
             @if (ViewData["Title"].ToString() != "Вхід" && ViewData["Title"].ToString() != "Реєстрація" && Context.Request.Cookies["un"] == null)
             {
-                <a class="nav-link text-dark" asp-area="" asp-controller="SignIn" asp-action="SignIn">Увійти</a>
+                <a class="nav-link text-light" asp-area="" asp-controller="SignIn" asp-action="SignIn">Увійти</a>
             }
             else if (Context.Request.Cookies["un"] != null)
             {
                 <div class="current-user">
-                    <a class="nav-link text-dark" href="#">@Context.Request.Cookies["un"].ToString()</a>
+                    <a class="nav-link text-light" href="#">@Context.Request.Cookies["un"].ToString()</a>
                     <div class="logged-user-menu">
                         <a href="@Url.Action("Index", "Publication")">Додати оголошення</a>
-                        <a href="#">Мої оголошення</a>
+                        <a href="@Url.Action("MyPublications", "Posts")">Мої оголошення</a>
                         <a href="@Url.Action("DeleteCookie", "SignIn")">Вийти</a>
                     </div>
                 </div>

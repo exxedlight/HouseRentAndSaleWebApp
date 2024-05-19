@@ -1,0 +1,28 @@
+﻿@model PostsViewModel
+
+@foreach (PublicationViewModel item in Model.Publications)
+{
+    <form class="single-post" asp-action="Details" asp-controller="Posts" method="post">
+
+        <div class="img-data">
+            <img src="@Html.Raw(item.images_pathes[0])" />
+        </div>
+        <div class="text-data">
+            <h6>@item.title</h6>
+            <em style="text-align: right;">@item.area_inf</em>
+            <text><b>Адреса:</b> @item.adres</text>
+
+
+            <text><b>Тип:</b> @item.objtype_inf</text>
+            <text><b>Дія:</b> @item.operation_inf</text>
+            <text><b>Стан:</b> @item.state_inf</text>
+
+            <text><b>Опис:</b> @(item.about.Length > 30 ? item.about.Substring(0, 30) + "..." : item.about)</text>
+            <p>@item.price грн.</p>
+
+            <input type="hidden" name="id" value="@item.Id" />
+
+        </div>
+
+    </form>
+}

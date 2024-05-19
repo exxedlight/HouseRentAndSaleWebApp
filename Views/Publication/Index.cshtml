@@ -34,8 +34,8 @@
         <div class="wrapper-selects">
             <h1>Інформація про нерухомість</h1>
 
-            <input type="text" placeholder="Заголовок" name="title" asp-for="title" value="@Model.title" required />
-            <input type="text" placeholder="Адреса" name="adres" asp-for="adres" value="@Model.title" required />
+            <input type="text" placeholder="Заголовок" name="title" asp-for="title" value="@Model.title" required autocomplete="off" />
+            <input type="text" placeholder="Адреса" name="adres" asp-for="adres" value="@Model.title" required autocomplete="off" />
             <br />
             <div class="search-filter">
                 @await Html.PartialAsync("~/Views/Partial/Filters/OperationTypePartial.cshtml")
@@ -45,11 +45,14 @@
             </div>
             <br />
 
-            <input type="number" min="0" placeholder="Площа" name="square" asp-for="square" value="@Model.square" required />
-            <input type="number" min="0" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" required />
+            <i>Площа</i>
+            <input type="number" min="0" placeholder="Площа" name="square" asp-for="square" value="@Model.square" required autocomplete="off" />
+            <i>Поверх</i>
+            <input type="number" min="0" placeholder="Поверх" name="floor" asp-for="floor" value="@Model.floor" required autocomplete="off" />
 
             <br />
-            <input type="number" min="0" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" required />
+            <i>Ціна</i>
+            <input type="number" min="0" placeholder="Ціна" name="price" asp-for="price" value="@Model.price" required autocomplete="off" />
         </div>
 
     </div>

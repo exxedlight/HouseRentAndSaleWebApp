@@ -3,26 +3,28 @@
     ViewData["Title"] = "Реєстрація";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Реєстрація</h1>
+<div class="wrapper">
+    <div class="text-center">
+        <h1 class="display-4">Реєстрація</h1>
+    </div>
+
+    <form class="auth-form" method="post" asp-action="CreateAccount" asp-controller="SignIn">
+
+        @if (Model.error_mes != null)
+        {
+            <p style="color: red;">@Model.error_mes</p>
+        }
+        <input type="text" placeholder="Логін" name="login" asp-for="login" value="@Model.login" required autocomplete="off" />
+        <br />
+        <input type="text" placeholder="ПІБ" name="pib" asp-for="pib" value="@Model.pib" required autocomplete="off" />
+        <input type="text" placeholder="Номер телефону" name="phone" asp-for="phone" value="@Model.phone" required autocomplete="off" />
+        <input type="text" placeholder="Ел. пошта" name="email" asp-for="email" value="@Model.email" required autocomplete="off" />
+        <br />
+        <input type="password" placeholder="Пароль" name="pass1" asp-for="pass1" value="@Model.pass1" required autocomplete="off" />
+        <input type="password" placeholder="Повторити пароль" name="pass2" asp-for="pass2" value="@Model.pass2" required autocomplete="off" />
+        <br />
+
+        <button type="submit"><p>Зареєструватися</p></button>
+        <a href="@Url.Action("SignIn", "SignIn")">Вже маєш аккаунт?</a>
+    </form>
 </div>
-
-<form class="auth-form" method="post" asp-action="CreateAccount" asp-controller="SignIn">
-
-    @if (Model.error_mes != null)
-    {
-        <p style="color: red;">@Model.error_mes</p>
-    }
-    <input type="text" placeholder="Логін" name="login" asp-for="login" value="@Model.login" required autocomplete="off" />
-    <br />
-    <input type="text" placeholder="ПІБ" name="pib" asp-for="pib" value="@Model.pib" required autocomplete="off" />
-    <input type="text" placeholder="Номер телефону" name="phone" asp-for="phone" value="@Model.phone" required autocomplete="off" />
-    <input type="text" placeholder="Ел. пошта" name="email" asp-for="email" value="@Model.email" required autocomplete="off" />
-    <br />
-    <input type="password" placeholder="Пароль" name="pass1" asp-for="pass1" value="@Model.pass1" required autocomplete="off" />
-    <input type="password" placeholder="Повторити пароль" name="pass2" asp-for="pass2" value="@Model.pass2" required autocomplete="off" />
-    <br />
-
-    <button type="submit"><p>Зареєструватися</p></button>
-    <a href="@Url.Action("SignIn", "SignIn")">Вже маєш аккаунт?</a>
-</form>
