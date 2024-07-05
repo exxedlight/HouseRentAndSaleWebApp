@@ -1,0 +1,7 @@
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/32218556-cf01-407a-ae0d-a43055dc5d9b)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/2afdb55f-2a06-42c2-b26f-662ae2e90490)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/5486a9eb-c04c-4691-883e-40447aee3d6d)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/e61ff08f-869e-4d62-994c-77ba7baa9ac5)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/96b50a72-1c2e-4f64-b17e-e75295a8982a)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/a7d09a1b-839c-4068-b035-874cf37196a2)
+![image](https://github.com/exxedlight/HouseRentAndSaleWebApp/assets/142519850/59b94ffa-fe42-4f38-a66c-f64d102d2b8d)
